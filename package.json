@@ -1,7 +1,7 @@
 {
   "name": "wiki-update-notificator",
   "version": "1.0.0",
-  "description": "",
+  "description": "Sends webhook to traQ when wiki page is updated.",
   "main": "src/index.ts",
   "scripts": {
     "lint": "eslint \"**/*.{ts,js,json}\""
@@ -19,5 +19,6 @@
     "eslint-plugin-prettier": "^3.1.4",
     "prettier": "^2.0.5",
     "typescript": "^3.9.3"
-  }
+  },
+  "private": true
 }
