@@ -1,0 +1,41 @@
+{
+  "pages": [
+    {
+      "status": "published",
+      "grant": 1,
+      "grantedUsers": [],
+      "liker": [],
+      "seenUsers": [],
+      "commentCount": 0,
+      "extended": "{}",
+      "_id": "",
+      "createdAt": "2020-06-21T16:51:49.013Z",
+      "path": "/SysAd/dev/weekly_report/2020/06/14_06/20/traPortfolio",
+      "creator": "",
+      "lastUpdateUser": "",
+      "updatedAt": "2020-06-21T16:51:49.037Z",
+      "redirectTo": null,
+      "__v": 4,
+      "revision": {
+        "format": "markdown",
+        "_id": "",
+        "createdAt": "2020-06-21T16:51:49.032Z",
+        "path": "/SysAd/dev/weekly_report/2020/06/14_06/20/traPortfolio",
+        "body": "# traPortfolio\r\n## 今週\r\n### 日程\r\n",
+        "author": {
+          "lang": "ja",
+          "status": 2,
+          "admin": true,
+          "_id": "",
+          "username": "sappi_red",
+          "name": "名前",
+          "createdAt": "2019-04-22T08:20:37.482Z",
+          "__v": 0
+        },
+        "__v": 0
+      },
+      "id": ""
+    }
+  ],
+  "ok": true
+}
