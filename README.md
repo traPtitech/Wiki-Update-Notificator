@@ -9,4 +9,4 @@ Runs on Google Apps Script.
 ## Props
 - `WEBHOOK_SECRET`: traQ Webhook Secret
 - `URL_ENCODED_WIKI_API_TOKEN`: URL encoded Crowi API Token
-- `lastUpdated`: last checked time (Would be updated and overwritten automaticaly)
+- `lastUpdated`: last checked time (Would be updated and overwritten automatically)
