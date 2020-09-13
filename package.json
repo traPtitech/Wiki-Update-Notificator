@@ -1,6 +1,6 @@
 {
   "name": "wiki-update-notificator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Sends webhook to traQ when wiki page is updated.",
   "main": "src/index.ts",
   "scripts": {
