@@ -4,7 +4,8 @@
   "description": "Sends webhook to traQ when wiki page is updated.",
   "main": "src/index.ts",
   "scripts": {
-    "lint": "eslint \"**/*.{ts,js,json}\""
+    "lint": "eslint \"**/*.{ts,js,json}\"",
+    "typecheck": "tsc --noEmit"
   },
   "author": "traP",
   "license": "MIT",
