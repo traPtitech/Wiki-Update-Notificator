@@ -1,5 +1,8 @@
+import { ArticlesResponse } from './types'
+
 function getProp(key: string) {
-  return PropertiesService.getScriptProperties().getProperty(key)
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  return PropertiesService.getScriptProperties().getProperty(key)!
 }
 function setProp(key: string, val: string) {
   return PropertiesService.getScriptProperties().setProperty(key, val)
@@ -36,7 +39,7 @@ function sendMessage(message: string) {
 function wikiUpdateNotificator() {
   const URL = `https://wiki.trap.jp/_api/pages.list?access_token=${ACCESS_TOKEN}&path=%2F`
   const data = UrlFetchApp.fetch(URL)
-  const jsonData = JSON.parse(data.getContentText())
+  const jsonData: ArticlesResponse = JSON.parse(data.getContentText())
   const articles = jsonData.pages
 
   const v = getProp(LAST_UPDATED_PROP_KEY)
