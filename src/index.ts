@@ -51,8 +51,9 @@ function wikiUpdateNotificator() {
       return lastUpdated < updated
     })
     .forEach(article => {
+      const encodedArticlePath = encodeURI(article.path)
       const text =
-        `${article.revision.author.username}が[${article.path}](https://wiki.trap.jp${article.path})を更新しました\n` +
+        `${article.revision.author.username}が[${article.path}](https://wiki.trap.jp${encodedArticlePath})を更新しました\n` +
         `\n\n` +
         `> ${article.revision.body.split('\r\n').slice(0, 4).join('\n> ')}`
       sendMessage(text)
