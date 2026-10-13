@@ -1,4 +1,4 @@
-import { ArticlesResponse } from './types'
+import { ArticlesResponse, UsersResponse } from './types'
 
 function getProp(key: string) {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -46,6 +46,7 @@ function wikiUpdateNotificator() {
 
   const v = getProp(LAST_UPDATED_PROP_KEY)
   const lastUpdated = new Date(v)
+  const usernames = new Map<string, string>()
 
   articles
     .filter(article => {
@@ -55,9 +56,23 @@ function wikiUpdateNotificator() {
     .forEach(article => {
       const encodedArticlePath = encodeURI(article.path)
       const pageLink = `[${article.path}](https://wiki.trap.jp${encodedArticlePath})`
-      // ページ移動・改名・復元は author を出さずにページ情報の更新として通知
+      // ページ移動・改名・復元は lastUpdateUser を使ってページ情報の更新として通知
       if (new Date(article.revision.createdAt) <= lastUpdated) {
-        sendMessage(`${pageLink} のページ情報が更新されました`)
+        const userId = article.lastUpdateUser
+        let username = usernames.get(userId)
+        if (!username) {
+          const userURL = `https://wiki.trap.jp/_api/users.list?access_token=${ACCESS_TOKEN}&user_ids=${encodeURIComponent(
+            userId
+          )}`
+          const userData = UrlFetchApp.fetch(userURL)
+          const users: UsersResponse = JSON.parse(userData.getContentText())
+          if (!users.ok || !users.users[0]) {
+            throw new Error('Failed to fetch the last update user')
+          }
+          username = users.users[0].username
+          usernames.set(userId, username)
+        }
+        sendMessage(`${username}が${pageLink}のページ情報を更新しました`)
         return
       }
 

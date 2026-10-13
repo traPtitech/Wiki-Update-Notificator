@@ -37,3 +37,8 @@ interface Author {
   name: string
   createdAt: string
 }
+
+export interface UsersResponse {
+  users: { username: string }[]
+  ok: boolean
+}
