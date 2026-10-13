@@ -42,6 +42,8 @@ function wikiUpdateNotificator() {
   const jsonData: ArticlesResponse = JSON.parse(data.getContentText())
   const articles = jsonData.pages
 
+  if (articles.length === 0) return
+
   const v = getProp(LAST_UPDATED_PROP_KEY)
   const lastUpdated = new Date(v)
 
@@ -52,8 +54,15 @@ function wikiUpdateNotificator() {
     })
     .forEach(article => {
       const encodedArticlePath = encodeURI(article.path)
+      const pageLink = `[${article.path}](https://wiki.trap.jp${encodedArticlePath})`
+      // ページ移動・改名・復元は author を出さずにページ情報の更新として通知
+      if (new Date(article.revision.createdAt) <= lastUpdated) {
+        sendMessage(`${pageLink} のページ情報が更新されました`)
+        return
+      }
+
       const text =
-        `${article.revision.author.username}が[${article.path}](https://wiki.trap.jp${encodedArticlePath})を更新しました\n` +
+        `${article.revision.author.username}が${pageLink}を更新しました\n` +
         `\n\n` +
         `> ${article.revision.body.split('\r\n').slice(0, 4).join('\n> ')}`
       sendMessage(text)
