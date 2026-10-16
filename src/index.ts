@@ -1,5 +1,3 @@
-import { ArticlesResponse, UsersResponse } from './types'
-
 function getProp(key: string) {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   return PropertiesService.getScriptProperties().getProperty(key)!

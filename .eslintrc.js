@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-undef
 module.exports = {
   root: true,
+  ignorePatterns: ['dist/'],
   parserOptions: {
     parser: '@typescript-eslint/parser'
   },

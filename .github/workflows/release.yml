@@ -18,15 +18,17 @@ jobs:
       - name: setup Node
         uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610 # v3.9.1
         with:
-          node-version: 18
+          node-version: 22
           cache: npm
-      - name: clasp install
-        run: sudo npm i -g @google/clasp
-      - name: genarate .clasprc.json
-        run: echo ${CLASPRC} > ~/.clasprc.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: generate .clasprc.json
+        run: printf '%s' "$CLASPRC" > ~/.clasprc.json
         env:
           CLASPRC: ${{ secrets.CLASPRC }}
       - name: push
-        run: clasp push --force
+        run: npx clasp push --force
       - name: deploy
-        run: clasp deploy --description "${TAG_NAME}"
+        run: npx clasp create-deployment --description "${TAG_NAME}"

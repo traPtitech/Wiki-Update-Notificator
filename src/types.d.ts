@@ -1,4 +1,4 @@
-export interface ArticlesResponse {
+interface ArticlesResponse {
   pages: Article[]
   ok: boolean
 }
@@ -38,7 +38,7 @@ interface Author {
   createdAt: string
 }
 
-export interface UsersResponse {
+interface UsersResponse {
   users: { username: string }[]
   ok: boolean
 }
