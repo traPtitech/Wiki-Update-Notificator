@@ -1,8 +1,13 @@
 {
   "compilerOptions": {
     "lib": ["esnext"],
+    "types": ["google-apps-script"],
     "experimentalDecorators": true,
     "target": "ES2019",
-    "strict": true
-  }
+    "strict": true,
+    "module": "none",
+    "outDir": "dist",
+    "noEmitOnError": true
+  },
+  "include": ["src/**/*.ts"]
 }
