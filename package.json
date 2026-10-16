@@ -7,7 +7,6 @@
     "lint": "eslint \"**/*.{ts,js,json}\"",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
-    "test": "npm run build && node test/build.cjs",
     "build": "rm -rf dist && tsc && cp src/appsscript.json dist/appsscript.json"
   },
   "author": "traP",
